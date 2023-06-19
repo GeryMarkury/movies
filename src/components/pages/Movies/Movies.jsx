@@ -7,7 +7,7 @@ import { SearchBox } from "components/SearchBox/SearchBox";
 export const Movies = () => {
     const [movies, setMovies] = useState([]);
     const [searchParams, setSearchParams] = useSearchParams();
-    const movieName = searchParams.get("name") ?? "";
+  const movieName = searchParams.get("name") ?? "";
 
     useEffect(() => {
     const fetchData = async () => {

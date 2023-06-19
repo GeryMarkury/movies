@@ -1,12 +1,15 @@
-import { useParams, Link, Outlet } from "react-router-dom";
+import { useParams, Link, Outlet, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { fetchMovieById } from "Api";
 import defaultPoster from '../../../images/defaultMoviePoster.jpg';
 import { MovieContainer, Image } from "./MovieDetail.styled";
+import { BackLink } from "components/BackLink/BackLink";
 
 export const MovieDetails = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState({});
+  const location = useLocation();
+  const backLinkHref = location.state?.from ?? "/movies";
   
   const BASE_URL = 'https://image.tmdb.org/t/p/';
   const IMG_SIZE = 'w400';
@@ -27,7 +30,9 @@ export const MovieDetails = () => {
   }, [movie, movieId]);
     
   return (<>
-    <MovieContainer><div><Image src={movie.poster_path ? `${BASE_URL}${IMG_SIZE}${movie.poster_path}` : defaultPoster} alt={movie.title} /></div>
+    <BackLink to={backLinkHref}>Go back</BackLink>
+    <MovieContainer>
+      <div><Image src={movie.poster_path ? `${BASE_URL}${IMG_SIZE}${movie.poster_path}` : defaultPoster} alt={movie.title} /></div>
     <div><h2>{movie.title}</h2>
     <p>User score: {movie.vote_average}</p>
     <h3>Overview</h3>
