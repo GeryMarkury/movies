@@ -6,7 +6,7 @@ import defaultPerson from '../../images/defaultPerson.png'
 const BASE_URL = 'https://image.tmdb.org/t/p/';
 const IMG_SIZE = 'w200';
 
-export const Cast = () => {
+const Cast = () => {
     const [cast, setCast] = useState([]);
     const { movieId } = useParams();
 
@@ -54,3 +54,5 @@ export const Cast = () => {
 </ul></>
     );
 };
+
+export default Cast;

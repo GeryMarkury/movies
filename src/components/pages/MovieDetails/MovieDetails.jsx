@@ -1,11 +1,11 @@
 import { useParams, Link, Outlet, useLocation } from "react-router-dom";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, Suspense } from "react";
 import { fetchMovieById } from "Api";
 import defaultPoster from '../../../images/defaultMoviePoster.jpg';
 import { MovieContainer, Image } from "./MovieDetail.styled";
 import { BackLink } from "components/BackLink/BackLink";
 
-export const MovieDetails = () => {
+const MovieDetails = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState({});
   const location = useLocation();
@@ -46,6 +46,8 @@ export const MovieDetails = () => {
         <Link to="reviews">Reviews</Link>
       </li>
     </ul>
-    <Outlet />
+    <Suspense fallback={<div>Loading subpage...</div>}><Outlet /></Suspense>
   </>)
 };
+
+export default MovieDetails;

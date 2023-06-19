@@ -4,7 +4,7 @@ import { fetchMovieBySearchQuery } from "Api";
 import { MovieList } from "components/MovieList/MovieList";
 import { SearchBox } from "components/SearchBox/SearchBox";
 
-export const Movies = () => {
+const Movies = () => {
     const [movies, setMovies] = useState([]);
     const [searchParams, setSearchParams] = useSearchParams();
   const movieName = searchParams.get("name") ?? "";
@@ -38,4 +38,6 @@ export const Movies = () => {
     </main>
   );
 
- };
+};
+ 
+export default Movies;
