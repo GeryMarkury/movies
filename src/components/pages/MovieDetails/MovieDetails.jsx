@@ -1,5 +1,5 @@
 import { useParams, Link, Outlet, useLocation } from "react-router-dom";
-import { useState, useEffect, useRef, Suspense } from "react";
+import { useState, useEffect, useRef } from "react";
 import { fetchMovieById } from "Api";
 import defaultPoster from '../../../images/defaultMoviePoster.jpg';
 import { MovieContainer, Image } from "./MovieDetail.styled";
@@ -46,7 +46,7 @@ const MovieDetails = () => {
         <Link to="reviews">Reviews</Link>
       </li>
     </ul>
-    <Suspense fallback={<div>Loading subpage...</div>}><Outlet /></Suspense>
+<Outlet />
   </>)
 };
 
