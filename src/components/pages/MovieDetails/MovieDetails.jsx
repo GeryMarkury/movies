@@ -27,7 +27,7 @@ const MovieDetails = () => {
     };
 
     fetchData();
-  }, [movie, movieId]);
+  }, [movieId]);
     
   return (<>
     <BackLink to={backLinkHref.current}>Go back</BackLink>
