@@ -21,10 +21,6 @@ const Movies = () => {
 
     fetchData();
   }, [movieName]);
-
-    const visibleMovies = movies.filter((movie) =>
-    movie.title.toLowerCase().includes(movieName.toLowerCase())
-    );
     
     const updateQueryString = (name) => {
     const nextParams = name !== "" ? { name } : {};
@@ -34,7 +30,7 @@ const Movies = () => {
     return (
     <main>
       <SearchBox value={movieName} onChange={updateQueryString} />
-      <MovieList movies={visibleMovies} />
+      <MovieList movies={movies} />
     </main>
   );
 
